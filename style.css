@@ -46,7 +46,6 @@ h1 {
     gap: 20px;
 }
 .box {
-    cursor: pointer;
     height: 180px;
     width: 200px;
     border-radius: 20px;
@@ -92,6 +91,15 @@ p {
 .break{
     flex-basis: 100%;
 }
+.not-yet {
+    cursor: not-allowed;
+}
+.now {
+    cursor: pointer;
+}
+.opened {
+    cursor: default;
+}
 
 /* POP-INS */
 
@@ -107,7 +115,7 @@ p {
     background-color: rgba(0,0,0,0.6);
     padding-top: 100px;
     cursor: pointer;
-    
+    transition: all 0.2s;
 }
 .modal-open {
     display: block;
@@ -129,6 +137,9 @@ p {
     font-size: 3em;
     font-weight: bold;
     transition: all 0.2s;
+}
+.modal:hover {
+    transform: scale(0.95);
 }
 .modal:hover .close {
     color: #fefefe;
