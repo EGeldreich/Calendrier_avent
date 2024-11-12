@@ -1,0 +1,223 @@
+/* STYLE RESTE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* VARIABLES */
+
+:root {
+    --mainColor: rgb(208, 40, 40);
+    --giftType1: #105C40;
+    --giftType2: #ff7418;
+    --giftType3: #2952a3;
+    --giftType4: #FFA5A0;
+
+}
+
+/* GENERAL*/
+
+body {
+    background-color: blanchedalmond;
+}
+
+/* TITLE */
+
+h1 {
+    margin-top: 1vh;
+    text-align: center;
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 700;
+    font-size: 5em;
+}
+
+/* CALENDAR */
+
+.calendar-container {
+    margin: 0 auto;
+    justify-content: space-around;
+    width : 90vw;
+    height: 80vh;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.box {
+    cursor: pointer;
+    height: 180px;
+    width: 200px;
+    border-radius: 20px;
+    color: white;
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 700;
+    font-size: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+.vertical-ribbon {
+    height: 100%;
+    width: 20px;
+    background-color: var(--mainColor);
+    position: absolute;
+    top: 0;
+}
+.horizontal-ribbon {
+    height: 20px;
+    width: 100%;
+    background-color: var(--mainColor);
+    position: absolute;
+    left: 0;
+}
+i {
+    font-size: 1.4em;
+    position: absolute;
+    top: 30%;
+    color: var(--mainColor);
+}
+p {
+    text-align: center;
+    z-index: 1;
+    border-radius: 5px;
+}
+.break{
+    flex-basis: 100%;
+}
+
+/* POP-INS */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 10vw;
+    top: 25vh;
+    width: 80vw;
+    height: 40vh;
+    border-radius: 100px;
+    background-color: rgba(0,0,0,0.6);
+    padding-top: 100px;
+    cursor: pointer;
+    
+}
+.modal-open {
+    display: block;
+}
+.modal-content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fefefe;
+    font-family: "Indie Flower", cursive;
+    font-weight: 700;
+    font-size: 3em;
+}
+.close {
+    color: var(--mainColor);
+    float: right;
+    font-size: 3em;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+.modal:hover .close {
+    color: #fefefe;
+}
+
+/* JS CLASSES */
+
+.color1 {
+    background-color: var(--giftType1);
+}
+.color2{
+    background-color: var(--giftType2);
+}
+.color3 {
+    background-color: var(--giftType3);
+}
+.color4 {
+    background-color: var(--giftType4);
+}
+
+.day1 {
+    flex: 1 1 100px;
+}
+.day2 {
+    flex: 2 2 100px;
+}
+.day3 {
+    flex: 3 3 100px;
+}
+.day4 {
+    flex: 2 2 100px;
+}
+.day5 {
+    flex: 3 3 100px;
+}
+.day6 {
+    flex: 1 1 100px;
+}
+.day7 {
+    flex: 3 3 100px;
+}
+.day8 {
+    flex: 1 1 100px;
+}
+.day9 {
+    flex: 2 2 100px;
+}
+.day10 {
+    flex: 1 1 100px;
+}
+.day11 {
+    flex: 1 1 100px;
+}
+.day12 {
+    flex: 3 3 100px;
+}
+.day13 {
+    flex: 2 2 100px;
+}
+.day14 {
+    flex: 2 2 100px;
+}
+.day15 {
+    flex: 1 1 100px;
+}
+.day16 {
+    flex: 1 1 100px;
+}
+.day17 {
+    flex: 1 1 100px;
+}
+.day18 {
+    flex: 3 3 100px;
+}
+.day19 {
+    flex: 2 2 100px;
+}
+.day20 {
+    flex: 1 1 100px;
+}
+.day21 {
+    flex: 3 3 100px;
+}
+.day22 {
+    flex: 2 2 100px;
+}
+.day23 {
+    flex: 1 1 100px;
+}
+.day24 {
+    flex: 3 3 100px;
+}
