@@ -9,12 +9,17 @@
 /* VARIABLES */
 
 :root {
-    --mainColor: rgb(208, 40, 40);
-    --giftType1: #105C40;
-    --giftType2: #ff7418;
-    --giftType3: #2952a3;
-    --giftType4: #FFA5A0;
-
+    --mainColor: #202020;
+    --giftType1: #5E8358;
+    --giftType2: #FF5E56;
+    --giftType3: #3b5c9e;
+    --giftType4: #FFC784;
+    
+    --giftType1Darker: #446040;
+    --giftType2Darker: #b2413c;
+    --giftType3Darker: #23375e;
+    --giftType4Darker: #b28b5c;
+    
 }
 
 /* GENERAL*/
@@ -65,28 +70,36 @@ h1 {
 }
 .vertical-ribbon {
     height: 100%;
-    width: 20px;
+    width: 5px;
     background-color: var(--mainColor);
     position: absolute;
     top: 0;
 }
 .horizontal-ribbon {
-    height: 20px;
+    height: 5px;
     width: 100%;
     background-color: var(--mainColor);
     position: absolute;
     left: 0;
 }
-i {
-    font-size: 1.4em;
+.horizontal-ribbon::before {
+    content: '';
+    width: 100%;
+    height: 30px;
+    background-image: url(/Assets/ribbon.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     position: absolute;
-    top: 30%;
-    color: var(--mainColor);
+    top: -24px;
+    left: 0;
 }
 p {
-    text-align: center;
+    line-height: 1.2em;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: var(--mainColor);
     z-index: 1;
-    border-radius: 5px;
 }
 .break{
     flex-basis: 100%;
@@ -102,7 +115,6 @@ p {
 }
 
 /* POP-INS */
-
 .modal {
     display: none;
     position: fixed;
@@ -146,7 +158,7 @@ p {
 }
 
 /* JS CLASSES */
-
+/* BOX COLORS */
 .color1 {
     background-color: var(--giftType1);
 }
@@ -159,7 +171,38 @@ p {
 .color4 {
     background-color: var(--giftType4);
 }
+.color5 {
+    background-color: var(--giftType1);
+    background: repeating-linear-gradient( -45deg, var(--giftType1Darker), var(--giftType1Darker) 5px, var(--giftType1) 5px, var(--giftType1) 25px );
+}
+.color6 {
+    background-color: var(--giftType2);
+    background-image: repeating-linear-gradient(45deg, var(--giftType2Darker) 0, var(--giftType2Darker) 2px, var(--giftType2) 2px, var(--giftType2) 25px);
+}
+.color7 {
+    background-color: var(--giftType3);
+    background-image: radial-gradient(var(--giftType3Darker) 2px, var(--giftType3) 2px);
+    background-size: 10px 10px;
+}
+.color8 {
+    background-color: var(--giftType4);
+    background-image:  radial-gradient(var(--giftType4Darker) 2px, transparent 2px), radial-gradient(var(--giftType4Darker) 2px, var(--giftType4) 2px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+}
+/* RIBBON PLACEMENT */
 
+.horizontal-ribbon__modifier1 {
+    top: 20%;
+}
+.horizontal-ribbon__modifier2 {
+    top: 30%;
+}
+.horizontal-ribbon__modifier3 {
+    top: 80%;
+}
+
+/* BOX SIZES */
 .day1 {
     flex: 1 1 100px;
 }

@@ -1,6 +1,6 @@
 //----- ELEMENTS
 const boxEl = document.querySelectorAll('.box');
-
+const ribbonEl = document.querySelectorAll('.horizontal-ribbon');
 const sentences = [
     "One",
     "Two",
@@ -29,7 +29,6 @@ const sentences = [
 ];
 
 //----- GENERAL FUNCTIONS
-
 //-- randomize + - 2 around given number
 const randomizeAround = (x) => {
     let min = x - 2;
@@ -107,12 +106,16 @@ for (i = 6; i < 19; i += 6){
     randomizeBreak(i); // Put 3 breaks, around the 6th, 12th and 18th div
 }
 
-
 //-----GIVE RANDOM COLORS
 boxEl.forEach(box => {
-    box.classList.add(`color${randomizeMinMax(1, 4)}`); // For each box, give it a class of color1 to color4
+    box.classList.add(`color${randomizeMinMax(1, 8)}`); // For each box, give it a class of color1 to color8
 });
 
+//-----GIVE RANDOM RIBBON PLACEMENT
+ribbonEl.forEach(ribbon => {
+    console.log(ribbon);
+    ribbon.classList.add(`horizontal-ribbon__modifier${randomizeMinMax(1, 3)}`); // For ribbon, give it a random modifier class
+});
 
 //----- BUTTON ORDERS AND MODALS HANLER
 //-- Give numbered class to boxes
