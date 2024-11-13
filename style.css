@@ -10,6 +10,7 @@
 
 :root {
     --mainColor: #202020;
+    --secondColor: #fefefe;
 
     --giftType1: #5E8358;
     --giftType2: #FF5E56;
@@ -30,16 +31,36 @@ body {
     background-color: sienna;
 }
 
-/* TITLE */
-
+/* HEADER */
+header {
+    display: flex;
+    padding: 1vh;
+    justify-content: space-around;
+    align-items: center;
+}
 h1 {
-    margin-top: 1vh;
     text-align: center;
     font-family: "Mountains of Christmas", serif;
     font-weight: 700;
     font-size: 5em;
-    color: #fefefe;
-    -webkit-text-stroke: 1px #202020;
+    line-height: 1em;
+    color: var(--secondColor);
+    -webkit-text-stroke: 1px var(--mainColor);
+}
+.reset {
+    height: 50px;
+    width: 200px;
+    border-radius: 25px;
+    background-color: var(--mainColor);
+    font-size: 1.5em;
+    font-family: "Mountains of Christmas", serif;
+    color: var(--secondColor);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 /* CALENDAR */
@@ -107,6 +128,7 @@ h1 {
         position: absolute;
         top: -24px;
         left: 0;
+        transition: all 0.8s ease;
     }
 }
 
@@ -142,7 +164,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fefefe;
+    color: var(--secondColor);
     font-family: "Indie Flower", cursive;
     font-weight: 700;
     font-size: 3em;
@@ -209,17 +231,18 @@ h1 {
 }
 
 /* RIBBON PLACEMENT */
+
 .horizontal-ribbon__modifier1 {
     top: 20%;
-    transition: all 0.3s ease-in;
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 .horizontal-ribbon__modifier2 {
     top: 30%;
-    transition: all 0.3s ease-in;
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 .horizontal-ribbon__modifier3 {
     top: 80%;
-    transition: all 0.3s ease-in;
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 /* OPENED EFFECT */
 .opened {
@@ -231,13 +254,16 @@ h1 {
     & .horizontal-ribbon__modifier1,
     .horizontal-ribbon__modifier2,
     .horizontal-ribbon__modifier3  {
-        top:100%
+        top:100%;
     }
     & .horizontal-ribbon::before {
         transform: rotate(12deg);
     }
+    & .horizontal-ribbon {
+        height: 0px;
+    }
     & p {
-        background-color: #fefefe;
+        background-color: var(--secondColor);
         color: #202020;
     }
 }

@@ -1,6 +1,7 @@
 //----- ELEMENTS
 const boxEl = document.querySelectorAll('.box');
 const ribbonEl = document.querySelectorAll('.horizontal-ribbon');
+const resetEl = document.querySelector('.reset');
 const sentences = [
     "Aujourd'hui, enfile ton pull de Noël préféré !",
     "Pense à ton repas de fête idéal.",
@@ -67,10 +68,15 @@ boxEl.forEach(box => {
 
 //-- Randomize ribbon placement
 ribbonEl.forEach(ribbon => {
-    console.log(ribbon);
     ribbon.classList.add(`horizontal-ribbon__modifier${randomizeMinMax(1, 3)}`); // For ribbon, give it a random modifier class
 });
 
+//-- Reset Button
+resetEl.addEventListener('click', () => {
+    let storedDays = []; // Set storedDays as empty
+    localStorage.setItem('storedDays', JSON.stringify(storedDays));
+    location.reload();
+})
 
 //----- RANDOMIZE NUMBERS
 //-- Empty array that will hold used numbers
@@ -84,7 +90,6 @@ const giveRandomNumbers = (nbMax) => {
 
         let randomNumber = Math.floor(Math.random() * nbMax) + 1; // Create random number between 1 and a max number
 
-        
         if (usedNumbers.indexOf(randomNumber) === -1){ // If the number is not already in
             usedNumbers.push(randomNumber); // Push it
         }
@@ -104,6 +109,10 @@ usedNumbers.forEach((x) =>
     // but in the end, the div y will always end up with the number in the yth position in the array
 );
 
+//----- GIVE NUMBERED CLASSES TO BOXES - usefull later
+usedNumbers.forEach((x) =>
+    boxEl[x-1].classList.add(`day${usedNumbers[x-1]}`) // Same logic as the <p> insertion for the -1
+);
 
 //----- CREATE RANDOMLY PLACED BREAKS
 //-- function to place a div with a class of break in a + - 2 random spot
@@ -120,20 +129,33 @@ for (i = 6; i < 19; i += 6){
 }
 
 
-//----- BUTTON ORDERS AND MODALS HANDLER
-//-- Give numbered class to boxes
-usedNumbers.forEach((x) =>
-    boxEl[x-1].classList.add(`day${usedNumbers[x-1]}`) // Same logic as the <p> insertion for the -1
-);
 
-//-- Set a counter
+//----- LOCAL STORAGE HANDLER
 let lastClickedDay = 0;
+//-- Function to handle Local Storage
+const localStorageHandler = () => {
+    let storedDays = JSON.parse(localStorage.getItem('storedDays')) || []; // Get already stored days OR create empty array
 
-//-- Preactivate day 1
-let dayOne = document.querySelector('.day1');
-dayOne.classList.remove('not-yet');
-dayOne.classList.add('now');
+    //-- Handle classes
+    storedDays.forEach(day => { // For each value stored, do
+        const dayEl = document.querySelector(`.day${day}`); // Get corresponding box
+        dayEl.classList.add('opened'); // Add the styling opened class
+    });
+    if (storedDays.length > 0) { // IF the array is not empty
+        lastClickedDay = Math.max(...storedDays); // Set LastclickedDay to the highest number
+        const nextDayEl = document.querySelector(`.day${lastClickedDay + 1}`); // Get the next day
+        nextDayEl.classList.add('now'); // Give it the right class
+        nextDayEl.classList.remove('not-yet'); // Remove not-yet class
+    } else { // IF the array is empty
+        let dayOne = document.querySelector('.day1'); // Handle day 1
+        dayOne.classList.remove('not-yet');
+        dayOne.classList.add('now');
+    }
+};
+window.addEventListener('DOMContentLoaded', localStorageHandler);
 
+
+//----- BUTTON ORDERS AND MODALS HANDLER
 //-- Activate buttons in order, and open the corresponding modal
 boxEl.forEach(box => {
 
@@ -142,7 +164,6 @@ boxEl.forEach(box => {
     //-- On click, open the modal if it's the following box
     box.addEventListener('click', () => { // Add event listener to each box
         if (dayNumber === lastClickedDay + 1) { // If it's the right box, do ->
-
             const modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
             modalEl.classList.add('modal-open'); // Add the modal-open class
             
@@ -154,6 +175,12 @@ boxEl.forEach(box => {
             nextDay.classList.add('now'); // Add the clickable class
    
             lastClickedDay++; // +1 to counter
+
+            //-- Handle Local Storage
+            let storedDays = JSON.parse(localStorage.getItem('storedDays')) || []; // Get already stored days OR create empty array
+            storedDays.push(dayNumber); // Push the clicked day number
+            localStorage.setItem('storedDays', JSON.stringify(storedDays)); // Set local storage with new value
+            console.log(storedDays);
         } else {
             return; // If it's not the right box, do nothing
         }
@@ -168,7 +195,6 @@ const modals = document.querySelectorAll('.modal');
 modals.forEach(modal => 
     modal.addEventListener('click', () => { // only opened modal are clickable as others as not displayed
     modal.classList.remove('modal-open');
-    console.log('im in');
     })
 );
 
