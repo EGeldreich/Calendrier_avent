@@ -2,31 +2,32 @@
 const boxEl = document.querySelectorAll('.box');
 const ribbonEl = document.querySelectorAll('.horizontal-ribbon');
 const sentences = [
-    "One",
-    "Two",
-    "Three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "height",
-    "nine",
-    "ten",
-    "eleven",
-    "twelve",
-    "thirteen",
-    "fourteen",
-    "fifteen",
-    "sixteen",
-    "seventeen",
-    "heightteen",
-    "nineteen",
-    "twenty",
-    "twentyone",
-    "twerntytwo",
-    "twenty3",
-    "twenty4"
+    "Aujourd'hui, enfile ton pull de Noël préféré !",
+    "Pense à ton repas de fête idéal.",
+    "Fais une décoration maison pour le sapin.",
+    "Choisis un film de Noël à regarder.",
+    "Offre un chocolat à quelqu'un que tu aimes.",
+    "Écoute une chanson de Noël en boucle !",
+    "Prépare une boisson chaude et réconfortante.",
+    "Allume une bougie parfumée.",
+    "Ce soir, compte les étoiles comme des cadeaux.",
+    "Fais un vœu sous le gui.",
+    "Décore un biscuit de Noël.",
+    "Écris une petite lettre de Noël.",
+    "Mets-toi au chaud avec un plaid doux.",
+    "Prépare une surprise pour quelqu'un.",
+    "Prends le temps d'admirer les lumières.",
+    "Cuisines une recette de famille.",
+    "Raconte un souvenir de Noël.",
+    "Chante une chanson de Noël à voix haute.",
+    "Rêve à ta liste de cadeaux idéale.",
+    "Prépare-toi à un réveillon mémorable !",
+    "Savoure une clémentine en pensant à l'hiver.",
+    "Relis une carte de vœux reçue.",
+    "Glisse un mot doux dans un cadeau.",
+    "Passe un merveilleux et joyeux Noël !"
 ];
+
 
 //----- GENERAL FUNCTIONS
 //-- randomize + - 2 around given number
@@ -58,6 +59,17 @@ const modalBuilder = (x) => {
 for (i = 0; i < 24; i++) {
     modalBuilder(i);
 }
+
+//-- Randomize colors
+boxEl.forEach(box => {
+    box.classList.add(`color${randomizeMinMax(1, 8)}`); // For each box, give it a class of color1 to color8
+});
+
+//-- Randomize ribbon placement
+ribbonEl.forEach(ribbon => {
+    console.log(ribbon);
+    ribbon.classList.add(`horizontal-ribbon__modifier${randomizeMinMax(1, 3)}`); // For ribbon, give it a random modifier class
+});
 
 
 //----- RANDOMIZE NUMBERS
@@ -92,6 +104,7 @@ usedNumbers.forEach((x) =>
     // but in the end, the div y will always end up with the number in the yth position in the array
 );
 
+
 //----- CREATE RANDOMLY PLACED BREAKS
 //-- function to place a div with a class of break in a + - 2 random spot
 const randomizeBreak = (x) => {
@@ -106,18 +119,8 @@ for (i = 6; i < 19; i += 6){
     randomizeBreak(i); // Put 3 breaks, around the 6th, 12th and 18th div
 }
 
-//-----GIVE RANDOM COLORS
-boxEl.forEach(box => {
-    box.classList.add(`color${randomizeMinMax(1, 8)}`); // For each box, give it a class of color1 to color8
-});
 
-//-----GIVE RANDOM RIBBON PLACEMENT
-ribbonEl.forEach(ribbon => {
-    console.log(ribbon);
-    ribbon.classList.add(`horizontal-ribbon__modifier${randomizeMinMax(1, 3)}`); // For ribbon, give it a random modifier class
-});
-
-//----- BUTTON ORDERS AND MODALS HANLER
+//----- BUTTON ORDERS AND MODALS HANDLER
 //-- Give numbered class to boxes
 usedNumbers.forEach((x) =>
     boxEl[x-1].classList.add(`day${usedNumbers[x-1]}`) // Same logic as the <p> insertion for the -1

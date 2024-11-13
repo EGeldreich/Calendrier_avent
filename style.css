@@ -10,6 +10,7 @@
 
 :root {
     --mainColor: #202020;
+
     --giftType1: #5E8358;
     --giftType2: #FF5E56;
     --giftType3: #3b5c9e;
@@ -19,13 +20,14 @@
     --giftType2Darker: #b2413c;
     --giftType3Darker: #23375e;
     --giftType4Darker: #b28b5c;
-    
 }
 
 /* GENERAL*/
 
 body {
-    background-color: blanchedalmond;
+    background-image: url(https://images.unsplash.com/photo-1512389142860-9c449e58a543);
+    background-size: cover;
+    background-color: sienna;
 }
 
 /* TITLE */
@@ -36,6 +38,8 @@ h1 {
     font-family: "Mountains of Christmas", serif;
     font-weight: 700;
     font-size: 5em;
+    color: #fefefe;
+    -webkit-text-stroke: 1px #202020;
 }
 
 /* CALENDAR */
@@ -46,6 +50,7 @@ h1 {
     width : 90vw;
     height: 80vh;
     padding: 10px;
+    padding-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -67,6 +72,16 @@ h1 {
     &:hover {
         transform: scale(1.05);
     }
+
+    & p {
+        line-height: 1.2em;
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        background-color: var(--mainColor);
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
 }
 .vertical-ribbon {
     height: 100%;
@@ -81,37 +96,18 @@ h1 {
     background-color: var(--mainColor);
     position: absolute;
     left: 0;
-}
-.horizontal-ribbon::before {
-    content: '';
-    width: 100%;
-    height: 30px;
-    background-image: url(/Assets/ribbon.svg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -24px;
-    left: 0;
-}
-p {
-    line-height: 1.2em;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    background-color: var(--mainColor);
-    z-index: 1;
-}
-.break{
-    flex-basis: 100%;
-}
-.not-yet {
-    cursor: not-allowed;
-}
-.now {
-    cursor: pointer;
-}
-.opened {
-    cursor: default;
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 30px;
+        background-image: url(/Assets/ribbon.svg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -24px;
+        left: 0;
+    }
 }
 
 /* POP-INS */
@@ -119,19 +115,27 @@ p {
     display: none;
     position: fixed;
     z-index: 2;
-    left: 10vw;
+    /* left: 10vw;
     top: 25vh;
     width: 80vw;
-    height: 40vh;
-    border-radius: 100px;
-    background-color: rgba(0,0,0,0.6);
-    padding-top: 100px;
-    cursor: pointer;
-    transition: all 0.2s;
+    height: 40vh; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    padding-top: 30vh;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
 }
 .modal-open {
     display: block;
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
 }
+
 .modal-content {
     width: 80%;
     margin: 0 auto;
@@ -144,20 +148,33 @@ p {
     font-size: 3em;
 }
 .close {
-    color: var(--mainColor);
+    color: var(--giftType2);
     float: right;
     font-size: 3em;
     font-weight: bold;
     transition: all 0.2s;
 }
-.modal:hover {
-    transform: scale(0.95);
-}
-.modal:hover .close {
-    color: #fefefe;
+.close:hover {
+    color: var(--giftType1);
 }
 
 /* JS CLASSES */
+
+/* CLICKABLE ? */
+.not-yet {
+    cursor: not-allowed;
+}
+.now {
+    cursor: pointer;
+    color: var(--giftType2Darker);
+}
+.opened {
+    cursor: default;
+}
+/* BREAK */
+.break{
+    flex-basis: 100%;
+}
 /* BOX COLORS */
 .color1 {
     background-color: var(--giftType1);
@@ -190,88 +207,48 @@ p {
     background-size: 20px 20px;
     background-position: 0 0,10px 10px;
 }
-/* RIBBON PLACEMENT */
 
+/* RIBBON PLACEMENT */
 .horizontal-ribbon__modifier1 {
     top: 20%;
+    transition: all 0.3s ease-in;
 }
 .horizontal-ribbon__modifier2 {
     top: 30%;
+    transition: all 0.3s ease-in;
 }
 .horizontal-ribbon__modifier3 {
     top: 80%;
+    transition: all 0.3s ease-in;
+}
+/* OPENED EFFECT */
+.opened {
+    opacity: 0.6;
+    overflow: hidden;
+    & .vertical-ribbon {
+        display: none;
+    }
+    & .horizontal-ribbon__modifier1,
+    .horizontal-ribbon__modifier2,
+    .horizontal-ribbon__modifier3  {
+        top:100%
+    }
+    & .horizontal-ribbon::before {
+        transform: rotate(12deg);
+    }
+    & p {
+        background-color: #fefefe;
+        color: #202020;
+    }
+}
+/* BOX SIZES */
+.day1, .day6, .day8, .day10, .day11, .day15, .day16, .day17, .day20, .day23 {
+    flex: 1 1 100px;
+}
+.day2, .day4, .day9, .day13, .day14, .day19, .day22  {
+    flex: 2 2 100px;
+}
+.day3, .day5, .day7, .day12, .day18, .day21, .day24 {
+    flex: 3 3 100px;
 }
 
-/* BOX SIZES */
-.day1 {
-    flex: 1 1 100px;
-}
-.day2 {
-    flex: 2 2 100px;
-}
-.day3 {
-    flex: 3 3 100px;
-}
-.day4 {
-    flex: 2 2 100px;
-}
-.day5 {
-    flex: 3 3 100px;
-}
-.day6 {
-    flex: 1 1 100px;
-}
-.day7 {
-    flex: 3 3 100px;
-}
-.day8 {
-    flex: 1 1 100px;
-}
-.day9 {
-    flex: 2 2 100px;
-}
-.day10 {
-    flex: 1 1 100px;
-}
-.day11 {
-    flex: 1 1 100px;
-}
-.day12 {
-    flex: 3 3 100px;
-}
-.day13 {
-    flex: 2 2 100px;
-}
-.day14 {
-    flex: 2 2 100px;
-}
-.day15 {
-    flex: 1 1 100px;
-}
-.day16 {
-    flex: 1 1 100px;
-}
-.day17 {
-    flex: 1 1 100px;
-}
-.day18 {
-    flex: 3 3 100px;
-}
-.day19 {
-    flex: 2 2 100px;
-}
-.day20 {
-    flex: 1 1 100px;
-}
-.day21 {
-    flex: 3 3 100px;
-}
-.day22 {
-    flex: 2 2 100px;
-}
-.day23 {
-    flex: 1 1 100px;
-}
-.day24 {
-    flex: 3 3 100px;
-}
