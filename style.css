@@ -46,6 +46,7 @@ h1 {
     line-height: 1em;
     color: var(--secondColor);
     -webkit-text-stroke: 1px var(--mainColor);
+    transition: all 0.2s ease-in-out;
 }
 .reset {
     height: 50px;
@@ -137,10 +138,6 @@ h1 {
     display: none;
     position: fixed;
     z-index: 2;
-    /* left: 10vw;
-    top: 25vh;
-    width: 80vw;
-    height: 40vh; */
     top: 0;
     left: 0;
     width: 100vw;
@@ -175,9 +172,9 @@ h1 {
     font-size: 3em;
     font-weight: bold;
     transition: all 0.2s;
-}
-.close:hover {
-    color: var(--giftType1);
+    &:hover {
+        color: var(--giftType1);
+    }
 }
 
 /* JS CLASSES */
@@ -198,51 +195,48 @@ h1 {
     flex-basis: 100%;
 }
 /* BOX COLORS */
-.color1 {
+.color1, .color5 {
     background-color: var(--giftType1);
 }
-.color2{
+.color2, .color6 {
     background-color: var(--giftType2);
 }
-.color3 {
+.color3, .color7 {
     background-color: var(--giftType3);
 }
-.color4 {
+.color4, .color8 {
     background-color: var(--giftType4);
 }
 .color5 {
-    background-color: var(--giftType1);
     background: repeating-linear-gradient( -45deg, var(--giftType1Darker), var(--giftType1Darker) 5px, var(--giftType1) 5px, var(--giftType1) 25px );
 }
 .color6 {
-    background-color: var(--giftType2);
     background-image: repeating-linear-gradient(45deg, var(--giftType2Darker) 0, var(--giftType2Darker) 2px, var(--giftType2) 2px, var(--giftType2) 25px);
 }
 .color7 {
-    background-color: var(--giftType3);
     background-image: radial-gradient(var(--giftType3Darker) 2px, var(--giftType3) 2px);
     background-size: 10px 10px;
 }
 .color8 {
-    background-color: var(--giftType4);
     background-image:  radial-gradient(var(--giftType4Darker) 2px, transparent 2px), radial-gradient(var(--giftType4Darker) 2px, var(--giftType4) 2px);
     background-size: 20px 20px;
     background-position: 0 0,10px 10px;
 }
 
 /* RIBBON PLACEMENT */
-
+.horizontal-ribbon__modifier1,
+.horizontal-ribbon__modifier2,
+.horizontal-ribbon__modifier3 {
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01); 
+}
 .horizontal-ribbon__modifier1 {
     top: 20%;
-    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 .horizontal-ribbon__modifier2 {
     top: 30%;
-    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 .horizontal-ribbon__modifier3 {
     top: 80%;
-    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 /* OPENED EFFECT */
 .opened {
@@ -278,3 +272,28 @@ h1 {
     flex: 3 3 100px;
 }
 
+@media (max-width: 900px) {
+    header {
+        flex-direction: column;
+    }
+    .box {
+        height: 150px;
+    }
+}
+
+@media (max-width: 660px) {
+    h1 {
+        font-size: 3em;
+        line-height: 1em;
+    }
+    .reset {
+        margin-top: 10px;
+        height: 40px;
+        width: 150px;
+        border-radius: 20px;
+        font-size: 1.2em;
+    }
+    .box {
+        height: 120px;
+    }
+}

@@ -74,8 +74,8 @@ ribbonEl.forEach(ribbon => {
 //-- Reset Button
 resetEl.addEventListener('click', () => {
     let storedDays = []; // Set storedDays as empty
-    localStorage.setItem('storedDays', JSON.stringify(storedDays));
-    location.reload();
+    localStorage.setItem('storedDays', JSON.stringify(storedDays)); // Put empty storedDays as a local item
+    location.reload(); // Reload the page
 })
 
 //----- RANDOMIZE NUMBERS
