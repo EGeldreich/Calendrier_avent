@@ -1,7 +1,9 @@
 //----- ELEMENTS
-const boxEl = document.querySelectorAll('.box');
-const ribbonEl = document.querySelectorAll('.horizontal-ribbon');
 const resetEl = document.querySelector('.reset');
+const templateEL = document.querySelector('#box-template');
+const containerEl = document.querySelector('.calendar-container');
+const daysLeftEl = document.querySelector('.days-left');
+// Box and Ribbons created later, as they are not setup yet
 const sentences = [
     "Aujourd'hui, enfile ton pull de Noël préféré !",
     "Pense à ton repas de fête idéal.",
@@ -26,9 +28,9 @@ const sentences = [
     "Savoure une clémentine en pensant à l'hiver.",
     "Relis une carte de vœux reçue.",
     "Glisse un mot doux dans un cadeau.",
-    "Passe un merveilleux et joyeux Noël !"
+    "Passe un merveilleux et joyeux Noël !",
+    "Il est trop tôt pour cette boîte !"
 ];
-
 
 //----- GENERAL FUNCTIONS
 //-- randomize + - 2 around given number
@@ -43,6 +45,16 @@ const randomizeMinMax = (x, y) => {
     return Math.floor(Math.random() * (y - x + 1)) + x;
 }
 
+//-- Generate 24 boxes
+for (i = 0; i < 24; i++) {
+    const newBoxEl = templateEL.content.cloneNode(true); // Create a clone of the template content
+    containerEl.appendChild(newBoxEl); // Put the clone in the container
+}
+
+// -- Call remaining elements
+const boxEl = document.querySelectorAll('.box');
+const ribbonEl = document.querySelectorAll('.horizontal-ribbon');
+
 //-- Generate modals
 const modalBuilder = (x) => {
     let modalModel = `
@@ -52,14 +64,15 @@ const modalBuilder = (x) => {
                 <span class="close">&times;</span>
             </div>
         </div>
-    `; // Create an html model with correct classes, and sentences defined in the "sentences" array
+        `; // Create an html model with correct classes, and sentences defined in the "sentences" array
     document.querySelector('main').insertAdjacentHTML("beforeend",modalModel); // Insert it at the end of the main tag
 }
 
-//-- Create 24 modals
-for (i = 0; i < 24; i++) {
+//-- Create 25 modals
+for (i = 0; i < 25; i++) {
     modalBuilder(i);
 }
+
 
 //-- Randomize colors
 boxEl.forEach(box => {
@@ -77,6 +90,29 @@ resetEl.addEventListener('click', () => {
     localStorage.setItem('storedDays', JSON.stringify(storedDays)); // Put empty storedDays as a local item
     location.reload(); // Reload the page
 })
+
+
+//----- DAYS LEFT
+const currDate = Date.now(); // Get current date
+// const currDate = new Date('12/25/2024'); // IN CASE YOU WANT TO TRY MORE BOXES
+const christmas = new Date('12/25/2024'); // Get christmas date
+
+const diffTime = Math.abs(christmas - currDate); // Get the difference between the two (result in milliseconds)
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // Do the math to get ms into days
+
+console.log(diffDays);
+const updateH2 = () => {
+    if (diffDays > 1) { // Change H2 depending on the days left before Xmas
+        daysLeftEl.textContent = `${diffDays} jours avant Noël !`;
+    } else if (diffDays === 1) {
+        daysLeftEl.textContent = `Dernier jour avant Nöel !`;
+    } else if (diffDays === 0) {
+        daysLeftEl.textContent = `C'est Nöel !`;
+    } else {
+        daysLeftEl.textContent = `Nöel est déjà passé ! `;
+    }
+}
+updateH2();
 
 //----- RANDOMIZE NUMBERS
 //-- Empty array that will hold used numbers
@@ -109,10 +145,12 @@ usedNumbers.forEach((x) =>
     // but in the end, the div y will always end up with the number in the yth position in the array
 );
 
+
 //----- GIVE NUMBERED CLASSES TO BOXES - usefull later
 usedNumbers.forEach((x) =>
     boxEl[x-1].classList.add(`day${usedNumbers[x-1]}`) // Same logic as the <p> insertion for the -1
 );
+
 
 //----- CREATE RANDOMLY PLACED BREAKS
 //-- function to place a div with a class of break in a + - 2 random spot
@@ -127,7 +165,6 @@ const randomizeBreak = (x) => {
 for (i = 6; i < 19; i += 6){
     randomizeBreak(i); // Put 3 breaks, around the 6th, 12th and 18th div
 }
-
 
 
 //----- LOCAL STORAGE HANDLER
@@ -163,8 +200,9 @@ boxEl.forEach(box => {
 
     //-- On click, open the modal if it's the following box
     box.addEventListener('click', () => { // Add event listener to each box
-        if (dayNumber === lastClickedDay + 1) { // If it's the right box, do ->
-            const modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
+
+        if (dayNumber === lastClickedDay + 1 && dayNumber < (26 - diffDays)) { // If it's the right box, do ->
+            let modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
             modalEl.classList.add('modal-open'); // Add the modal-open class
             
             //-- Handle relevant classes
@@ -181,8 +219,9 @@ boxEl.forEach(box => {
             storedDays.push(dayNumber); // Push the clicked day number
             localStorage.setItem('storedDays', JSON.stringify(storedDays)); // Set local storage with new value
             console.log(storedDays);
-        } else {
-            return; // If it's not the right box, do nothing
+
+        } else { // If it's not the right box ->
+            document.querySelector('.modal25').classList.add('modal-open'); // Open the 25th modal, with the "too early" text
         }
     });
 });

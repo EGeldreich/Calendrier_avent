@@ -16,109 +16,24 @@
     <title>Calendrier de l'avent</title>
 </head>
 <body>
-    <header>
-        <h1>Calendrier de l'avent</h1>
-        <button class="reset">Rénitialiser</button>
-    </header>
-    <main>
-        <div class="calendar-container">
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-            <button class="box not-yet">
-                <div class="vertical-ribbon"></div>
-                <div class="horizontal-ribbon"></div>
-            </button>
-        </div>
-    </main>
+    <div class="filter">
+        <header>
+            <div>
+                <h1>Calendrier de l'avent</h1>
+                <button class="reset">Rénitialiser</button>
+            </div>
+            <h2 class="days-left"></h2>
+        </header>
+        <main>
+            <div class="calendar-container">
+                <template id="box-template">
+                    <button class="box not-yet">
+                        <div class="vertical-ribbon"></div>
+                        <div class="horizontal-ribbon"></div>
+                    </button>
+                </template>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

@@ -31,10 +31,15 @@ body {
     background-color: sienna;
 }
 
+
 /* HEADER */
 header {
+    padding: 2vh;
+    background: linear-gradient(180deg, rgba(32,32,32,0.3) 0%, rgba(32,32,32,0.3) 66%, rgba(32,32,32,0) 100%);
+
+}
+header div{
     display: flex;
-    padding: 1vh;
     justify-content: space-around;
     align-items: center;
 }
@@ -45,6 +50,16 @@ h1 {
     font-size: 5em;
     line-height: 1em;
     color: var(--secondColor);
+    -webkit-text-stroke: 1px var(--mainColor);
+    transition: all 0.2s ease-in-out;
+}
+h2 {
+    text-align: center;
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 700;
+    font-size: 3em;
+    line-height: 1em;
+    color: var(--giftType2);
     -webkit-text-stroke: 1px var(--mainColor);
     transition: all 0.2s ease-in-out;
 }
@@ -78,7 +93,7 @@ h1 {
     gap: 20px;
 }
 .box {
-    height: 180px;
+    height: 170px;
     width: 200px;
     border-radius: 20px;
     color: white;
@@ -94,7 +109,6 @@ h1 {
     &:hover {
         transform: scale(1.05);
     }
-
     & p {
         line-height: 1.2em;
         width: 60px;
