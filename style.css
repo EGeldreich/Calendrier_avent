@@ -151,58 +151,6 @@ header {
 }
 
 /* POP-INS */
-/* .modal {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.7);
-    padding-top: 30vh;
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
-
-    & .modal-content {
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: var(--secondColor);
-        font-family: "Indie Flower", cursive;
-        font-weight: 700;
-        font-size: 3em;
-    }
-
-    & .close {
-        color: var(--giftType2);
-        float: right;
-        font-size: 3em;
-        font-weight: bold;
-        transition: all 0.2s;
-        &:hover {
-            color: var(--giftType1);
-        }
-    }
-}
-.modal-open {
-    display: block;
-
-    &:hover {
-        cursor: pointer;
-        opacity: 1;
-    }
-} */
-@keyframes cross-spin {
-    0% {
-        rotate: 0;
-    }
-    100% {
-        rotate: -180deg;
-    }
-}
 .modal {
     width: 600px;
     height: 300px;
@@ -333,31 +281,33 @@ header {
 }
 
 /* OPENED EFFECT */
-.opened {
-    opacity: 0.6;
-    overflow: hidden;
-
-    & .vertical-ribbon {
-        display: none;
-    }
-
-    & .horizontal-ribbon__modifier1,
-    .horizontal-ribbon__modifier2,
-    .horizontal-ribbon__modifier3  {
-        top:100%;
-    }
-
-    & .horizontal-ribbon::before {
-        transform: rotate(12deg);
-    }
-
-    & .horizontal-ribbon {
-        height: 0px;
-    }
-
-    & p {
-        background-color: var(--secondColor);
-        color: #202020;
+.calendar-container {
+    & .opened {
+        opacity: 0.6;
+        overflow: hidden;
+    
+        & .vertical-ribbon {
+            display: none;
+        }
+    
+        & .horizontal-ribbon__modifier1,
+        .horizontal-ribbon__modifier2,
+        .horizontal-ribbon__modifier3  {
+            top:100%;
+        }
+    
+        & .horizontal-ribbon::before {
+            transform: rotate(12deg);
+        }
+    
+        & .horizontal-ribbon {
+            height: 0px;
+        }
+    
+        & p {
+            background-color: var(--mainColor);
+            color: var(--secondColor);
+        }
     }
 }
 

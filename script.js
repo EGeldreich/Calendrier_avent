@@ -93,8 +93,8 @@ resetEl.addEventListener('click', () => {
 
 
 //----- DAYS LEFT
-// const currDate = Date.now(); // Get current date
-const currDate = new Date('12/25/2024'); // IN CASE YOU WANT TO TRY MORE BOXES
+const currDate = Date.now(); // Get current date
+// const currDate = new Date('12/25/2024'); // IN CASE YOU WANT TO TRY MORE BOXES
 const christmas = new Date('12/25/2024'); // Get christmas date
 
 const diffTime = Math.abs(christmas - currDate); // Get the difference between the two (result in milliseconds)
