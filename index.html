@@ -17,22 +17,28 @@
 </head>
 <body>
     <div class="filter">
-        <header>
-            <div>
+        <header class="flex-row">
+            <div class="flex-row">
                 <h1>Calendrier de l'avent</h1>
                 <button class="reset">Rénitialiser</button>
             </div>
             <h2 class="days-left"></h2>
         </header>
         <main>
-            <div class="calendar-container">
+            <div class="calendar-container flex-row">
                 <template id="box-template">
-                    <button class="box not-yet">
+                    <button class="box not-yet flex-row">
                         <div class="vertical-ribbon"></div>
                         <div class="horizontal-ribbon"></div>
                     </button>
                 </template>
             </div>
+            <!-- <div class="modal modal${x+1}">
+                <div class="modal-content">
+                    <p>${sentences[x]}</p>
+                    <span class="close">&times;</span>
+                </div>
+            </div> -->
         </main>
     </div>
 </body>

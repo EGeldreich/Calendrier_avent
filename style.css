@@ -7,7 +7,6 @@
 }
 
 /* VARIABLES */
-
 :root {
     --mainColor: #202020;
     --secondColor: #fefefe;
@@ -24,6 +23,9 @@
 }
 
 /* GENERAL*/
+.flex-row {
+    display: flex;
+}
 
 body {
     background-image: url(https://images.unsplash.com/photo-1512389142860-9c449e58a543);
@@ -37,118 +39,119 @@ body {
 
 /* HEADER */
 header {
-    padding: 2vh;
+    padding: 40px 50px 10px;
     background: linear-gradient(180deg, rgba(32,32,32,0.3) 0%, rgba(32,32,32,0.3) 66%, rgba(32,32,32,0) 100%);
-
-}
-header div{
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-}
-h1 {
-    text-align: center;
+    justify-content: space-between;
     font-family: "Mountains of Christmas", serif;
-    font-weight: 700;
-    font-size: 5em;
-    line-height: 1em;
-    color: var(--secondColor);
-    -webkit-text-stroke: 1px var(--mainColor);
-    transition: all 0.2s ease-in-out;
-}
-h2 {
-    text-align: center;
-    font-family: "Mountains of Christmas", serif;
-    font-weight: 700;
-    font-size: 3em;
-    line-height: 1em;
-    color: var(--giftType2);
-    -webkit-text-stroke: 1px var(--mainColor);
-    transition: all 0.2s ease-in-out;
-}
-.reset {
-    height: 50px;
-    width: 200px;
-    border-radius: 25px;
-    background-color: var(--mainColor);
-    font-size: 1.5em;
-    font-family: "Mountains of Christmas", serif;
-    color: var(--secondColor);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
 
-    &:hover {
-        transform: scale(1.05);
+    & div {
+        justify-content: space-around;
+        align-items: center;
+        gap: 50px;
+        font-weight: 700;
+        line-height: 1em;
+
+        & h1 {
+            font-size: 5em;
+            color: var(--secondColor);
+            -webkit-text-stroke: 1px var(--mainColor);
+            transition: all 0.2s ease-in-out;
+        }
+
+        & .reset {
+            height: 50px;
+            width: 200px;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: var(--mainColor);
+            font-size: 1.5em;
+            font-family: "Mountains of Christmas", serif;
+            color: var(--secondColor);
+            transition: all 0.2s ease-in-out;
+        
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
     }
+
+    & h2 {
+        font-size: 3em;
+        color: var(--giftType2);
+        -webkit-text-stroke: 1px var(--mainColor);
+        transition: all 0.2s ease-in-out;
+    }
+
 }
 
 /* CALENDAR */
-
 .calendar-container {
-    margin: 50px auto;
-    justify-content: space-around;
+    margin: 10px auto;
     width : 90vw;
-    display: flex;
     flex-wrap: wrap;
     gap: 20px;
-}
-.box {
-    height: 170px;
-    width: 200px;
-    border-radius: 20px;
-    color: white;
-    font-family: "Mountains of Christmas", serif;
-    font-weight: 700;
-    font-size: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: all 0.2s ease-in-out;
 
-    &:hover {
-        transform: scale(1.05);
-    }
-    & p {
-        line-height: 1.2em;
-        width: 60px;
-        height: 60px;
-        border-radius: 30px;
-        background-color: var(--mainColor);
-        z-index: 1;
-        transition: all 0.3s ease;
-    }
-}
-.vertical-ribbon {
-    height: 100%;
-    width: 5px;
-    background-color: var(--mainColor);
-    position: absolute;
-    top: 0;
-}
-.horizontal-ribbon {
-    height: 5px;
-    width: 100%;
-    background-color: var(--mainColor);
-    position: absolute;
-    left: 0;
+    & .box {
+        height: 170px;
+        width: 200px;
+        border-radius: 20px;
+        color: var(--secondColor);
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-size: 3em;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+    
+        &:hover {
+            transform: scale(1.05);
+        }
 
-    &::before {
-        content: '';
-        width: 100%;
-        height: 30px;
-        background-image: url("./Assets/ribbon.svg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: -24px;
-        left: 0;
-        transition: all 0.8s ease;
+        & p {
+            line-height: 1.2em;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: var(--mainColor);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        & .vertical-ribbon {
+            height: 100%;
+            width: 5px;
+            background-color: var(--mainColor);
+            position: absolute;
+            top: 0;
+        }
+
+        & .horizontal-ribbon {
+            height: 5px;
+            width: 100%;
+            background-color: var(--mainColor);
+            position: absolute;
+            left: 0;
+        
+            &::before {
+                content: '';
+                width: 100%;
+                height: 30px;
+                background-image: url("./Assets/ribbon.svg");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: absolute;
+                top: -24px;
+                left: 0;
+                transition: all 0.8s ease;
+            }
+        }
     }
 }
 
 /* POP-INS */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     z-index: 2;
@@ -160,52 +163,125 @@ h2 {
     padding-top: 30vh;
     transition: all 0.5s ease-in-out;
     opacity: 0;
+
+    & .modal-content {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--secondColor);
+        font-family: "Indie Flower", cursive;
+        font-weight: 700;
+        font-size: 3em;
+    }
+
+    & .close {
+        color: var(--giftType2);
+        float: right;
+        font-size: 3em;
+        font-weight: bold;
+        transition: all 0.2s;
+        &:hover {
+            color: var(--giftType1);
+        }
+    }
 }
 .modal-open {
     display: block;
+
     &:hover {
         cursor: pointer;
         opacity: 1;
     }
+} */
+@keyframes cross-spin {
+    0% {
+        rotate: 0;
+    }
+    100% {
+        rotate: -180deg;
+    }
 }
+.modal {
+    width: 600px;
+    height: 300px;
+    display: none;
+    position: fixed;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    z-index: 2;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    
 
-.modal-content {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--secondColor);
-    font-family: "Indie Flower", cursive;
-    font-weight: 700;
-    font-size: 3em;
-}
-.close {
-    color: var(--giftType2);
-    float: right;
-    font-size: 3em;
-    font-weight: bold;
-    transition: all 0.2s;
+    & .modal-content {
+        color: var(--secondColor);
+        font-family: "Indie Flower", cursive;
+        font-weight: 700;
+        font-size: 3em;
+        line-height: 1em;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 50px;
+        gap: 20px;
+
+        & p {
+            width: 80%;
+            align-self: center;
+            text-align: center;
+        }
+        & .close {
+            height: 100%;
+            font-size: 1em;
+            color: var(--giftType2);
+            transition: all 0.5s;
+            transform: rotate(0deg);
+        }
+
+    }
     &:hover {
-        color: var(--giftType1);
+        transform: scale(1.05);
+        & .modal-content {
+            & .close {
+                transform: rotate(270deg);
+                color: var(--giftType1);
+            }
+        }
+    }
+
+}
+.modal-open {
+    display: block;
+
+    &:hover {
+        opacity: 1;
     }
 }
 
 /* JS CLASSES */
 
 /* CLICKABLE ? */
-.not-yet {
-    cursor: not-allowed;
-}
-.now {
-    cursor: pointer;
-    color: var(--mainColor);
-    & p {
-        background-color: var(--secondColor);
+.calendar-container {
+    & .not-yet {
+        cursor: not-allowed;
     }
-}
-.opened {
-    cursor: default;
+
+    & .now {
+        cursor: pointer;
+        color: var(--mainColor);
+
+        & p {
+            background-color: var(--secondColor);
+        }
+    }
+
+    & .opened {
+        cursor: default;
+    }
 }
 /* BREAK */
 .break{
@@ -255,29 +331,36 @@ h2 {
 .horizontal-ribbon__modifier3 {
     top: 80%;
 }
+
 /* OPENED EFFECT */
 .opened {
     opacity: 0.6;
     overflow: hidden;
+
     & .vertical-ribbon {
         display: none;
     }
+
     & .horizontal-ribbon__modifier1,
     .horizontal-ribbon__modifier2,
     .horizontal-ribbon__modifier3  {
         top:100%;
     }
+
     & .horizontal-ribbon::before {
         transform: rotate(12deg);
     }
+
     & .horizontal-ribbon {
         height: 0px;
     }
+
     & p {
         background-color: var(--secondColor);
         color: #202020;
     }
 }
+
 /* BOX SIZES */
 .day1, .day6, .day8, .day10, .day11, .day15, .day16, .day17, .day20, .day23 {
     flex: 1 1 100px;
@@ -289,43 +372,73 @@ h2 {
     flex: 3 3 100px;
 }
 
+/* MEDIA QUERIES */
+@media (max-width: 1340px) {
+    header {
+        padding: 40px 20px 10px;
+        flex-direction: column;
+    }
+    .calendar-container {
+        & .box {
+            height: 150px;
+        }
+    }
+}
+
 @media (max-width: 900px) {
     header div {
         flex-direction: column;
     }
-    .box {
-        height: 150px;
-    }
 }
 
 @media (max-width: 660px) {
-    h1 {
-        font-size: 3em;
-        line-height: 1em;
+    header {
+        padding: 10px;
+
+        & div {
+            gap: 20px;
+
+            & h1 {
+                font-size: 3em;
+                line-height: 1em;
+            }
+
+            & .reset {
+                height: 40px;
+                width: 150px;
+                border-radius: 20px;
+                font-size: 1.2em;
+            }
+        }
+
+        & h2 {
+            font-size: 2.5em;
+        }
     }
-    .reset {
-        margin-top: 10px;
-        height: 40px;
-        width: 150px;
-        border-radius: 20px;
-        font-size: 1.2em;
-    }
-    .box {
-        height: 120px;
+    .calendar-container {
+        & .box {
+            height: 120px;
+        }
     }
 }
 @media (max-width: 440px) {
-    h1 {
-        font-size: 2.5em;
-    }
-    .reset {
-        margin-top: 10px;
-        height: 35px;
-        width: 120px;
-        border-radius: 20px;
-        font-size: 1em;
-    }
-    h2 {
-        font-size: 2.5em;
+    header {
+        & div {
+            & h1 {
+                font-size: 2.5em;
+            }
+
+            & .reset {
+                margin-top: 10px;
+                height: 35px;
+                width: 120px;
+                border-radius: 20px;
+                font-size: 1em;
+            }
+        }
+        
+        & h2 {
+            font-size: 2em;
+        }
     }
 }

@@ -61,7 +61,7 @@ const modalBuilder = (x) => {
         <div class="modal modal${x+1}">
             <div class="modal-content">
                 <p>${sentences[x]}</p>
-                <span class="close">&times;</span>
+                <i class="close fa-solid fa-x"></i>
             </div>
         </div>
         `; // Create an html model with correct classes, and sentences defined in the "sentences" array
@@ -93,8 +93,8 @@ resetEl.addEventListener('click', () => {
 
 
 //----- DAYS LEFT
-const currDate = Date.now(); // Get current date
-// const currDate = new Date('12/25/2024'); // IN CASE YOU WANT TO TRY MORE BOXES
+// const currDate = Date.now(); // Get current date
+const currDate = new Date('12/25/2024'); // IN CASE YOU WANT TO TRY MORE BOXES
 const christmas = new Date('12/25/2024'); // Get christmas date
 
 const diffTime = Math.abs(christmas - currDate); // Get the difference between the two (result in milliseconds)
@@ -193,6 +193,7 @@ window.addEventListener('DOMContentLoaded', localStorageHandler);
 
 
 //----- BUTTON ORDERS AND MODALS HANDLER
+let modalOpened = 0;
 //-- Activate buttons in order, and open the corresponding modal
 boxEl.forEach(box => {
 
@@ -201,9 +202,10 @@ boxEl.forEach(box => {
     //-- On click, open the modal if it's the following box
     box.addEventListener('click', () => { // Add event listener to each box
 
-        if (dayNumber === lastClickedDay + 1 && dayNumber < (26 - diffDays)) { // If it's the right box, do ->
+        if (dayNumber === lastClickedDay + 1 && dayNumber < (26 - diffDays) && modalOpened == 0) { // If it's the right box, do ->
             let modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
             modalEl.classList.add('modal-open'); // Add the modal-open class
+            modalOpened = 1;
             
             //-- Handle relevant classes
             box.classList.remove('now'); // Remove clickable class from the box we just clicked
@@ -220,6 +222,8 @@ boxEl.forEach(box => {
             localStorage.setItem('storedDays', JSON.stringify(storedDays)); // Set local storage with new value
             console.log(storedDays);
 
+        } else if (modalOpened == 1) {
+            return;
         } else { // If it's not the right box ->
             document.querySelector('.modal25').classList.add('modal-open'); // Open the 25th modal, with the "too early" text
         }
@@ -234,6 +238,7 @@ const modals = document.querySelectorAll('.modal');
 modals.forEach(modal => 
     modal.addEventListener('click', () => { // only opened modal are clickable as others as not displayed
     modal.classList.remove('modal-open');
+    modalOpened = 0;
     })
 );
 
