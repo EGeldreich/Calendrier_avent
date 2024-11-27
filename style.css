@@ -27,8 +27,11 @@
 
 body {
     background-image: url(https://images.unsplash.com/photo-1512389142860-9c449e58a543);
-    background-size: cover;
     background-color: sienna;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -82,12 +85,9 @@ h2 {
 /* CALENDAR */
 
 .calendar-container {
-    margin: 0 auto;
+    margin: 50px auto;
     justify-content: space-around;
     width : 90vw;
-    height: 80vh;
-    padding: 10px;
-    padding-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -199,7 +199,10 @@ h2 {
 }
 .now {
     cursor: pointer;
-    color: var(--giftType2Darker);
+    color: var(--mainColor);
+    & p {
+        background-color: var(--secondColor);
+    }
 }
 .opened {
     cursor: default;
@@ -309,5 +312,20 @@ h2 {
     }
     .box {
         height: 120px;
+    }
+}
+@media (max-width: 440px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    .reset {
+        margin-top: 10px;
+        height: 35px;
+        width: 120px;
+        border-radius: 20px;
+        font-size: 1em;
+    }
+    h2 {
+        font-size: 2.5em;
     }
 }
