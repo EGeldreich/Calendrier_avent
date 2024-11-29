@@ -11,11 +11,11 @@
     --mainColor: #202020;
     --secondColor: #fefefe;
 
-    --giftType1: #5E8358;
-    --giftType2: #FF5E56;
+    --giftType1: #5e8358;
+    --giftType2: #ff5e56;
     --giftType3: #3b5c9e;
-    --giftType4: #FFC784;
-    
+    --giftType4: #ffc784;
+
     --giftType1Darker: #446040;
     --giftType2Darker: #b2413c;
     --giftType3Darker: #23375e;
@@ -36,11 +36,15 @@ body {
     background-size: cover;
 }
 
-
 /* HEADER */
 header {
     padding: 40px 50px 10px;
-    background: linear-gradient(180deg, rgba(32,32,32,0.3) 0%, rgba(32,32,32,0.3) 66%, rgba(32,32,32,0) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(32, 32, 32, 0.3) 0%,
+        rgba(32, 32, 32, 0.3) 66%,
+        rgba(32, 32, 32, 0) 100%
+    );
     align-items: center;
     justify-content: space-between;
     font-family: "Mountains of Christmas", serif;
@@ -68,7 +72,7 @@ header {
             font-family: "Mountains of Christmas", serif;
             color: var(--secondColor);
             transition: all 0.2s ease-in-out;
-        
+
             &:hover {
                 transform: scale(1.05);
             }
@@ -80,13 +84,12 @@ header {
         color: var(--giftType2);
         transition: all 0.2s ease-in-out;
     }
-
 }
 
 /* CALENDAR */
 .calendar-container {
     margin: 10px auto;
-    width : 90vw;
+    width: 90vw;
     flex-wrap: wrap;
     gap: 20px;
 
@@ -102,7 +105,7 @@ header {
         justify-content: center;
         position: relative;
         transition: all 0.2s ease-in-out;
-    
+
         &:hover {
             transform: scale(1.05);
         }
@@ -131,9 +134,9 @@ header {
             background-color: var(--mainColor);
             position: absolute;
             left: 0;
-        
+
             &::before {
-                content: '';
+                content: "";
                 width: 100%;
                 height: 30px;
                 background-image: url("./Assets/ribbon.svg");
@@ -157,11 +160,10 @@ header {
     top: calc(50% - 150px);
     left: calc(50% - 300px);
     z-index: 2;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    
 
     & .modal-content {
         color: var(--secondColor);
@@ -187,7 +189,6 @@ header {
             transition: all 0.5s;
             transform: rotate(0deg);
         }
-
     }
     &:hover {
         transform: scale(1.05);
@@ -198,10 +199,18 @@ header {
             }
         }
     }
-
+}
+@keyframes modal-opening {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 .modal-open {
     display: block;
+    animation: 0.3s ease-in-out modal-opening;
 
     &:hover {
         opacity: 1;
@@ -230,43 +239,66 @@ header {
     }
 }
 /* BREAK */
-.break{
+.break {
     flex-basis: 100%;
 }
 /* BOX COLORS */
-.color1, .color5 {
+.color1,
+.color5 {
     background-color: var(--giftType1);
 }
-.color2, .color6 {
+.color2,
+.color6 {
     background-color: var(--giftType2);
 }
-.color3, .color7 {
+.color3,
+.color7 {
     background-color: var(--giftType3);
 }
-.color4, .color8 {
+.color4,
+.color8 {
     background-color: var(--giftType4);
 }
 .color5 {
-    background: repeating-linear-gradient( -45deg, var(--giftType1Darker), var(--giftType1Darker) 5px, var(--giftType1) 5px, var(--giftType1) 25px );
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--giftType1Darker),
+        var(--giftType1Darker) 5px,
+        var(--giftType1) 5px,
+        var(--giftType1) 25px
+    );
 }
 .color6 {
-    background-image: repeating-linear-gradient(45deg, var(--giftType2Darker) 0, var(--giftType2Darker) 2px, var(--giftType2) 2px, var(--giftType2) 25px);
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--giftType2Darker) 0,
+        var(--giftType2Darker) 2px,
+        var(--giftType2) 2px,
+        var(--giftType2) 25px
+    );
 }
 .color7 {
-    background-image: radial-gradient(var(--giftType3Darker) 2px, var(--giftType3) 2px);
+    background-image: radial-gradient(
+        var(--giftType3Darker) 2px,
+        var(--giftType3) 2px
+    );
     background-size: 10px 10px;
 }
 .color8 {
-    background-image:  radial-gradient(var(--giftType4Darker) 2px, transparent 2px), radial-gradient(var(--giftType4Darker) 2px, var(--giftType4) 2px);
+    background-image: radial-gradient(
+            var(--giftType4Darker) 2px,
+            transparent 2px
+        ),
+        radial-gradient(var(--giftType4Darker) 2px, var(--giftType4) 2px);
     background-size: 20px 20px;
-    background-position: 0 0,10px 10px;
+    background-position: 0 0, 10px 10px;
 }
 
 /* RIBBON PLACEMENT */
 .horizontal-ribbon__modifier1,
 .horizontal-ribbon__modifier2,
 .horizontal-ribbon__modifier3 {
-    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01); 
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.66, 1.01);
 }
 .horizontal-ribbon__modifier1 {
     top: 20%;
@@ -283,25 +315,25 @@ header {
     & .opened {
         opacity: 0.6;
         overflow: hidden;
-    
+
         & .vertical-ribbon {
             display: none;
         }
-    
+
         & .horizontal-ribbon__modifier1,
         .horizontal-ribbon__modifier2,
-        .horizontal-ribbon__modifier3  {
-            top:100%;
+        .horizontal-ribbon__modifier3 {
+            top: 100%;
         }
-    
+
         & .horizontal-ribbon::before {
             transform: rotate(12deg);
         }
-    
+
         & .horizontal-ribbon {
             height: 0px;
         }
-    
+
         & p {
             background-color: var(--mainColor);
             color: var(--secondColor);
@@ -310,13 +342,34 @@ header {
 }
 
 /* BOX SIZES */
-.day1, .day6, .day8, .day10, .day11, .day15, .day16, .day17, .day20, .day23 {
+.day1,
+.day6,
+.day8,
+.day10,
+.day11,
+.day15,
+.day16,
+.day17,
+.day20,
+.day23 {
     flex: 1 1 100px;
 }
-.day2, .day4, .day9, .day13, .day14, .day19, .day22  {
+.day2,
+.day4,
+.day9,
+.day13,
+.day14,
+.day19,
+.day22 {
     flex: 2 2 100px;
 }
-.day3, .day5, .day7, .day12, .day18, .day21, .day24 {
+.day3,
+.day5,
+.day7,
+.day12,
+.day18,
+.day21,
+.day24 {
     flex: 3 3 100px;
 }
 
@@ -384,7 +437,7 @@ header {
                 font-size: 1em;
             }
         }
-        
+
         & h2 {
             font-size: 2em;
         }
