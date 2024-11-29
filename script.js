@@ -197,7 +197,7 @@ const localStorageHandler = () => {
 window.addEventListener("DOMContentLoaded", localStorageHandler);
 
 //----- BUTTON ORDERS AND MODALS HANDLER
-let modalOpened = 0;
+let modalOpened = 0; // Variable used to avoid having multiple modals opened
 //-- Activate buttons in order, and open the corresponding modal
 boxEl.forEach((box) => {
     const dayNumber = parseInt(box.className.match(/day(\d+)/)[1]); // Get the correct number from each box
@@ -206,14 +206,22 @@ boxEl.forEach((box) => {
     box.addEventListener("click", () => {
         // Add event listener to each box
 
+        //-- Get the color class of the clicked box
+        let boxColor = box.className.match(/color\d+/)?.[0];
+        // className return all the classes name in an array
+        // match() looks for what's (here) in the array
+        // /color\d+/ => /sets the expression we are looking for/
+        // \d stands for any number \d+ stands for any multi characters number
+
         if (
             dayNumber === lastClickedDay + 1 &&
             dayNumber < 26 - diffDays &&
             modalOpened == 0
         ) {
             // If it's the right box, do ->
+
             let modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
-            modalEl.classList.add("modal-open"); // Add the modal-open class
+            modalEl.classList.add("modal-open", boxColor); // Add the modal-open class and the color
             modalOpened = 1;
 
             //-- Handle relevant classes
@@ -235,7 +243,9 @@ boxEl.forEach((box) => {
             return;
         } else {
             // If it's not the right box ->
-            document.querySelector(".modal25").classList.add("modal-open"); // Open the 25th modal, with the "too early" text
+            document
+                .querySelector(".modal25")
+                .classList.add("modal-open", boxColor); // Open the 25th modal, with the "too early" text
         }
     });
 });
@@ -247,8 +257,9 @@ const modals = document.querySelectorAll(".modal");
 //-- For each modal, remove modal-open class on click
 modals.forEach((modal) =>
     modal.addEventListener("click", () => {
+        let modalColor = modal.className.match(/color\d+/)?.[0];
         // only opened modal are clickable as others as not displayed
-        modal.classList.remove("modal-open");
+        modal.classList.remove("modal-open", modalColor);
         modalOpened = 0;
     })
 );

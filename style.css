@@ -41,8 +41,8 @@ header {
     padding: 40px 50px 10px;
     background: linear-gradient(
         180deg,
-        rgba(32, 32, 32, 0.3) 0%,
-        rgba(32, 32, 32, 0.3) 66%,
+        rgba(32, 32, 32, 0.5) 0%,
+        rgba(32, 32, 32, 0.5) 66%,
         rgba(32, 32, 32, 0) 100%
     );
     align-items: center;
@@ -185,7 +185,7 @@ header {
         & .close {
             height: 100%;
             font-size: 1em;
-            color: var(--giftType2);
+            color: var(--secondColor);
             transition: all 0.5s;
             transform: rotate(0deg);
         }
@@ -195,7 +195,7 @@ header {
         & .modal-content {
             & .close {
                 transform: rotate(270deg);
-                color: var(--giftType1);
+                color: var(--mainColor);
             }
         }
     }
