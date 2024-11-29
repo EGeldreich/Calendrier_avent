@@ -64,7 +64,15 @@ const modalBuilder = (x) => {
             <div class="horizontal-ribbon"></div>
             <div class="modal-content">
                 <p>${sentences[x]}</p>
-                <i class="close fa-solid fa-x"></i>
+                <div class="close">
+                    <div class="flocon">
+                        <!-- Branches supplémentaires du flocon -->
+                        <div class="branch"></div>
+                        <div class="branch"></div>
+                        <div class="branch"></div>
+                        <div class="branch"></div>
+                    </div>
+                </div>
             </div>
         </div>
         `; // Create an html model with correct classes, and sentences defined in the "sentences" array
