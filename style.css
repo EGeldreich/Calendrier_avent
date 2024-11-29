@@ -69,7 +69,7 @@ header {
             cursor: pointer;
             background-color: var(--mainColor);
             font-size: 1.5em;
-            font-family: "Mountains of Christmas", serif;
+            font-family: "Indie Flower", cursive;
             color: var(--secondColor);
             transition: all 0.2s ease-in-out;
 
@@ -83,6 +83,7 @@ header {
         font-size: 3em;
         color: var(--giftType2);
         transition: all 0.2s ease-in-out;
+        font-family: "Indie Flower", cursive;
     }
 }
 
@@ -190,11 +191,11 @@ header {
     top: calc(50% - 150px);
     left: calc(50% - 300px);
     z-index: 2;
-    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     overflow: hidden;
+    box-shadow: 0 0 20px 10px rgba(32, 32, 32, 0.3);
 
     & .ribbon-setter {
         position: relative;
