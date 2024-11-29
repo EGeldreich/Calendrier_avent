@@ -59,6 +59,9 @@ const ribbonEl = document.querySelectorAll(".horizontal-ribbon");
 const modalBuilder = (x) => {
     let modalModel = `
         <div class="modal modal${x + 1}">
+            <div class="ribbon-setter"></div>
+            <div class="vertical-ribbon"></div>
+            <div class="horizontal-ribbon"></div>
             <div class="modal-content">
                 <p>${sentences[x]}</p>
                 <i class="close fa-solid fa-x"></i>
@@ -206,12 +209,16 @@ boxEl.forEach((box) => {
     box.addEventListener("click", () => {
         // Add event listener to each box
 
-        //-- Get the color class of the clicked box
+        //-- Get the color class of the clicked box, and the ribbon modifier
         let boxColor = box.className.match(/color\d+/)?.[0];
         // className return all the classes name in an array
         // match() looks for what's (here) in the array
         // /color\d+/ => /sets the expression we are looking for/
         // \d stands for any number \d+ stands for any multi characters number
+        // ?.[0] is used to return first result
+        let boxRibbon = box
+            .querySelector(".horizontal-ribbon")
+            .className.match(/horizontal-ribbon__modifier\d/)?.[0];
 
         if (
             dayNumber === lastClickedDay + 1 &&
@@ -219,10 +226,13 @@ boxEl.forEach((box) => {
             modalOpened == 0
         ) {
             // If it's the right box, do ->
+            modalOpened = 1;
 
             let modalEl = document.querySelector(`.modal${dayNumber}`); // Get the corresponding modal
             modalEl.classList.add("modal-open", boxColor); // Add the modal-open class and the color
-            modalOpened = 1;
+            modalEl
+                .querySelector(".horizontal-ribbon")
+                .classList.add(boxRibbon);
 
             //-- Handle relevant classes
             box.classList.remove("now"); // Remove clickable class from the box we just clicked
@@ -243,9 +253,21 @@ boxEl.forEach((box) => {
             return;
         } else {
             // If it's not the right box ->
-            document
-                .querySelector(".modal25")
-                .classList.add("modal-open", boxColor); // Open the 25th modal, with the "too early" text
+            let modal25 = document.querySelector(".modal25");
+            modal25.classList.add("modal-open"); // Open the 25th modal, with the "too early" text
+            if (!/color\d+/.test(modal25.className)) {
+                // Avoid having multiple color class
+                modal25.classList.add(boxColor);
+            }
+            if (
+                !/horizontal-ribbon__modifier\d/.test(
+                    modal25.querySelector(".horizontal-ribbon").className
+                )
+            ) {
+                modal25
+                    .querySelector(".horizontal-ribbon")
+                    .classList.add(boxRibbon);
+            }
         }
     });
 });
@@ -257,9 +279,15 @@ const modals = document.querySelectorAll(".modal");
 //-- For each modal, remove modal-open class on click
 modals.forEach((modal) =>
     modal.addEventListener("click", () => {
+        // Get current modal color and ribbon modifier
         let modalColor = modal.className.match(/color\d+/)?.[0];
+        let boxRibbon = modal
+            .querySelector(".horizontal-ribbon")
+            .className.match(/horizontal-ribbon__modifier\d/)?.[0];
+
         // only opened modal are clickable as others as not displayed
         modal.classList.remove("modal-open", modalColor);
+        modal.querySelector(".horizontal-ribbon").classList.remove(boxRibbon);
         modalOpened = 0;
     })
 );

@@ -149,6 +149,34 @@ header {
             }
         }
     }
+    /* OPENED BOXES STYLE */
+    & .opened {
+        opacity: 0.6;
+        overflow: hidden;
+
+        & .vertical-ribbon {
+            display: none;
+        }
+
+        & .horizontal-ribbon__modifier1,
+        .horizontal-ribbon__modifier2,
+        .horizontal-ribbon__modifier3 {
+            top: 100%;
+        }
+
+        & .horizontal-ribbon::before {
+            transform: rotate(12deg);
+        }
+
+        & .horizontal-ribbon {
+            height: 0px;
+        }
+
+        & p {
+            background-color: var(--mainColor);
+            color: var(--secondColor);
+        }
+    }
 }
 
 /* POP-INS */
@@ -164,7 +192,37 @@ header {
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    & .ribbon-setter {
+        position: relative;
+    }
+    & .vertical-ribbon {
+        height: 100%;
+        width: 5px;
+        background-color: var(--mainColor);
+        position: absolute;
+        left: calc(50% - (5px / 2));
+    }
 
+    & .horizontal-ribbon {
+        height: 5px;
+        width: 100%;
+        background-color: var(--mainColor);
+        position: absolute;
+        left: 0;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 30px;
+            background-image: url("./Assets/ribbon.svg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: -24px;
+            left: 0;
+            transition: all 0.8s ease;
+        }
+    }
     & .modal-content {
         color: var(--secondColor);
         font-family: "Indie Flower", cursive;
@@ -178,9 +236,13 @@ header {
         gap: 20px;
 
         & p {
+            background-color: rgba(32, 32, 32, 0.3);
+            padding: 10px;
+            border-radius: 10px;
             width: 80%;
             align-self: center;
             text-align: center;
+            z-index: 1;
         }
         & .close {
             height: 100%;
@@ -238,11 +300,14 @@ header {
         cursor: default;
     }
 }
+
 /* BREAK */
 .break {
     flex-basis: 100%;
 }
-/* BOX COLORS */
+
+/* CUSTOMISERS CLASSES */
+/* COLORS */
 .color1,
 .color5 {
     background-color: var(--giftType1);
@@ -308,37 +373,6 @@ header {
 }
 .horizontal-ribbon__modifier3 {
     top: 80%;
-}
-
-/* OPENED EFFECT */
-.calendar-container {
-    & .opened {
-        opacity: 0.6;
-        overflow: hidden;
-
-        & .vertical-ribbon {
-            display: none;
-        }
-
-        & .horizontal-ribbon__modifier1,
-        .horizontal-ribbon__modifier2,
-        .horizontal-ribbon__modifier3 {
-            top: 100%;
-        }
-
-        & .horizontal-ribbon::before {
-            transform: rotate(12deg);
-        }
-
-        & .horizontal-ribbon {
-            height: 0px;
-        }
-
-        & p {
-            background-color: var(--mainColor);
-            color: var(--secondColor);
-        }
-    }
 }
 
 /* BOX SIZES */
