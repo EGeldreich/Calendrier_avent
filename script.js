@@ -230,7 +230,7 @@ boxEl.forEach((box) => {
 
         if (
             dayNumber === lastClickedDay + 1 &&
-            dayNumber < 26 - diffDays &&
+            dayNumber < 25 - diffDays &&
             modalOpened == 0
         ) {
             // If it's the right box, do ->
