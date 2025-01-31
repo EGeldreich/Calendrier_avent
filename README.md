@@ -12,10 +12,8 @@
 -   Use JavaScript to enforce date restrictions and localStorage for state persistence.  
 
 ## 📜 Guidelines  
--   Users can only open boxes in order (box x only unlocks if x-1 is opened).  
--   Only past days’ boxes can be opened, based on the current date.  
--   The layout and appearance of the boxes are randomized at each load.  
--   LocalStorage ensures persistence of opened boxes.  
+-   Implement as much of a list of specified features as possible
+-   Once must-have features are done, feel free to add some more
 
 ## 💪 Own Challenge  
 -   Working in complete autonomy on the project.  
